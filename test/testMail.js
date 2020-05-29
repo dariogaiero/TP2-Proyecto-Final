@@ -37,12 +37,14 @@ async function main() {
         console.log('running tests...\n')
 
         for (const test of tests) {
+
             const { result, msg } = await test()
+
             if (result) {
-                errores++
+                exitos++
                 console.log(msg)
             } else {
-                exitos++
+                errores++
                 console.log(msg)
             }
             finalizados++

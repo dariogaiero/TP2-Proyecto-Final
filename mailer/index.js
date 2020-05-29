@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
     auth: config.mailer
 });
 
-function sendMail(mailOptions) {
+async function sendMail(mailOptions) {
     // return transporter.sendMail(mailOptions, function (error, info) {
     //     if (error)
     //         console.log("Error: "+error);
@@ -18,31 +18,18 @@ function sendMail(mailOptions) {
     //         console.log('Email enviado: ' + info.response);
     // });
 
+    let result
+    let msg
 
-
-    let { result, msg } = transporter.sendMail(mailOptions, function (error, info) {
-
-        let result
-        let msg 
-
-        console.log('llega 1')
-
-        if (error) {
-            // throw error
-            result = false
-            msg = error
-            return { result, msg }
-        }
-        else {
-            result = true
-            msg = info.response
-            return { result, msg }
-        }
-
-    });
-
-    console.log('llega 2')
-
+    try {
+        let info = await transporter.sendMail(mailOptions)
+        result = true
+        msg = info.messageId
+    } catch (error) {
+        // throw error.message;
+        result = false
+        msg = error
+    }
 
     return { result, msg }
 }
@@ -58,9 +45,8 @@ async function sendLicenciaNotification(data) {
         // text: 'Prueba de envio de mail'
         text: data.text,
     };
-    const { result, msg } = sendMail(mailOptions);
 
-    return { result, msg }
+    return { result, msg } = sendMail(mailOptions);
 }
 
 module.exports = {
