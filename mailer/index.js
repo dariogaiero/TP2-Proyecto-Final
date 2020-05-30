@@ -18,20 +18,30 @@ async function sendMail(mailOptions) {
     //         console.log('Email enviado: ' + info.response);
     // });
 
-    let result
-    let msg
+    // let result
+    // let msg
 
-    try {
-        let info = await transporter.sendMail(mailOptions)
-        result = true
-        msg = info.messageId
-    } catch (error) {
-        // throw error.message;
-        result = false
-        msg = error
-    }
+    // try {
+    //     let info = await transporter.sendMail(mailOptions)
+    //     result = true
+    //     msg = info.messageId
+    // } catch (error) {
+    //     // throw error.message;
+    //     result = false
+    //     msg = error
+    // }
 
-    return { result, msg }
+    // return { result, msg }
+
+
+    return await transporter.sendMail(mailOptions).then(function (resultado) {
+        return { "msg": 'Mail enviado correctamente', "result": true }
+
+    }).catch(function (error) {
+        // console.error(" transporter.sendMail ", error)
+        return { "msg": "ERROR: "+error.response, "result": false }
+
+    })
 }
 
 
@@ -46,7 +56,7 @@ async function sendLicenciaNotification(data) {
         text: data.text,
     };
 
-    return { result, msg } = sendMail(mailOptions);
+    return response = sendMail(mailOptions);
 }
 
 module.exports = {

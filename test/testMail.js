@@ -14,9 +14,9 @@ async function testMail() {
             text: 'Probando texto del mail'
         }
 
-        const { result, msg } = await mail.sendLicenciaNotification(dataMail)
+        var response = await mail.sendLicenciaNotification(dataMail)
 
-        return { result, msg }
+        return response
 
     } catch (error) {
         throw error.message;
@@ -31,21 +31,21 @@ async function main() {
 
     try {
         var tests = [
-            testMail,
+            testMail(),
         ];
 
         console.log('running tests...\n')
 
         for (const test of tests) {
 
-            const { result, msg } = await test()
+            const response = await test
 
-            if (result) {
+            if (response.result) {
                 exitos++
-                console.log(msg)
+                console.log(response.msg)
             } else {
                 errores++
-                console.log(msg)
+                console.log(response.msg)
             }
             finalizados++
         }
