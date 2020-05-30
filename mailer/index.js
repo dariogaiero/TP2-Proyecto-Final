@@ -34,7 +34,7 @@ async function sendMail(mailOptions) {
     // return { result, msg }
 
 
-    return await transporter.sendMail(mailOptions).then(function (resultado) {
+    return await transporter.sendMail(mailOptions).then(function () {
         return { "msg": 'Mail enviado correctamente', "result": true }
 
     }).catch(function (error) {
