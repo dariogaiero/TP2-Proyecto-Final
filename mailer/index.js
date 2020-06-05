@@ -1,7 +1,9 @@
-// import nodemailer from 'nodemailer';
-const nodemailer = require('nodemailer')
+import nodemailer from 'nodemailer';
+// const nodemailer = require('nodemailer')
 
-module.export = class Mailer {
+// module.export =
+
+class Mailer {
 
     constructor(service, mail, pass) {
         this.service = service
@@ -39,4 +41,4 @@ module.export = class Mailer {
 
 }
 
-// export default Mailer
+export default Mailer
