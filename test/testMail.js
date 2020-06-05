@@ -1,12 +1,9 @@
 // import mail from '../mailer/index';
 // import { mail } from '../mailer/index';
 
-import mail, { sendMail } from '../mailer/index';
+import Mailer from '../mailer/index.js';
 
 async function testMailOK() {
-    // let result = false;
-    // let msg,
-
     try {
         var dataMail = {
             to: 'dariogaiero@gmail.com',
@@ -14,18 +11,32 @@ async function testMailOK() {
             text: 'Probando texto del mail'
         }
 
-        new mail('gmail', 'licenciastestnode@gmail.com', 'licenciastest2020')
+        const mail = new Mailer('gmail', 'licenciastestnode@gmail.com', 'licenciastest2020')
 
-        sendMail(dataMail)
-
-        // var response = await mail.sendLicenciaNotification(dataMail)
-
-        // return response
+        return response = mail.sendMail(dataMail)
 
     } catch (error) {
         throw error.message;
     }
 }
+
+// async function testMailFAKE() {
+
+//     try {
+//         var dataMail = {
+//             to: 'dariogaiero@gmail.com',
+//             subject: 'Prueba mail licencias - TP2',
+//             text: 'Probando texto del mail'
+//         }
+
+//         const mail = new Mailer('gmail', 'licenciastestnodeFAKE@gmail.com', 'licenciastest2020')
+
+//         return response = mail.sendMail(dataMail)
+
+//     } catch (error) {
+//         throw error.message;
+//     }
+// }
 
 async function main() {
 
@@ -36,13 +47,18 @@ async function main() {
     try {
         var tests = [
             testMailOK(),
+            // testMailFAKE(),
         ];
 
         console.log('running tests...\n')
 
         for (const test of tests) {
 
+            console.log('LLAMO AL TEST')
+
             const response = await test
+
+            console.log('RESPNSE DEL TEST'+response)
 
             if (response.result) {
                 exitos++

@@ -1,8 +1,6 @@
-const nodemailer = require('nodemailer');
-// const config = require('../config');
+import nodemailer from 'nodemailer';
 
-
-export class Mailer {
+class Mailer {
 
     constructor(service, mail, pass) {
         this.service = service
@@ -18,52 +16,26 @@ export class Mailer {
         });
     }
 
-    // const transporter = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: config.mailer
-    // });
-
     async sendMail(data) {
 
-        // async function sendMail(mailOptions) {
-
-        //     return await transporter.sendMail(mailOptions).then(function () {
-        //         return { "msg": 'Mail enviado correctamente', "result": true }
-
-        //     }).catch(function (error) {
-        //         return { "msg": "ERROR: " + error.response, "result": false }
-        //     })
-        // }
-
-
-        // async function sendLicenciaNotification(data) {
-        //     const mailOptions = {
-        //         from: 'Licencias <licenciastestnode@gmail.com>',
-        //         to: data.to,
-        //         subject: data.subject,
-        //         text: data.text,
-        //     };
-
-        //     return response = sendMail(mailOptions);
-        // }
-
-
         const mailOptions = {
-            from: 'Licencias <'+this.mail+'>',
+            from: 'Licencias <' + this.mail + '>',
             to: data.to,
             subject: data.subject,
             text: data.text,
         };
 
-        return await transporter.sendMail(mailOptions).then(function () {
+        var response = await this.transporter.sendMail(mailOptions).then(function () {
             return { "msg": 'Mail enviado correctamente', "result": true }
 
         }).catch(function (error) {
             return { "msg": "ERROR: " + error.response, "result": false }
         })
 
+        return response
+
     }
 
 }
 
-// export default Mailer
+export default Mailer
