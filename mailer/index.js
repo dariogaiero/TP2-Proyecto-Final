@@ -1,64 +1,69 @@
 const nodemailer = require('nodemailer');
-const config = require('../config');
-
-// import nodemailer from 'nodemailer';
-// import config from '../config';
+// const config = require('../config');
 
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: config.mailer
-});
+export class Mailer {
 
-async function sendMail(mailOptions) {
-    // return transporter.sendMail(mailOptions, function (error, info) {
-    //     if (error)
-    //         console.log("Error: "+error);
-    //     else
-    //         console.log('Email enviado: ' + info.response);
+    constructor(service, mail, pass) {
+        this.service = service
+        this.mail = mail
+        this.pass = pass
+
+        this.transporter = nodemailer.createTransport({
+            service: service,
+            auth: {
+                user: mail,
+                pass: pass
+            }
+        });
+    }
+
+    // const transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: config.mailer
     // });
 
-    // let result
-    // let msg
+    async sendMail(data) {
 
-    // try {
-    //     let info = await transporter.sendMail(mailOptions)
-    //     result = true
-    //     msg = info.messageId
-    // } catch (error) {
-    //     // throw error.message;
-    //     result = false
-    //     msg = error
-    // }
+        // async function sendMail(mailOptions) {
 
-    // return { result, msg }
+        //     return await transporter.sendMail(mailOptions).then(function () {
+        //         return { "msg": 'Mail enviado correctamente', "result": true }
+
+        //     }).catch(function (error) {
+        //         return { "msg": "ERROR: " + error.response, "result": false }
+        //     })
+        // }
 
 
-    return await transporter.sendMail(mailOptions).then(function () {
-        return { "msg": 'Mail enviado correctamente', "result": true }
+        // async function sendLicenciaNotification(data) {
+        //     const mailOptions = {
+        //         from: 'Licencias <licenciastestnode@gmail.com>',
+        //         to: data.to,
+        //         subject: data.subject,
+        //         text: data.text,
+        //     };
 
-    }).catch(function (error) {
-        // console.error(" transporter.sendMail ", error)
-        return { "msg": "ERROR: "+error.response, "result": false }
+        //     return response = sendMail(mailOptions);
+        // }
 
-    })
+
+        const mailOptions = {
+            from: 'Licencias <'+this.mail+'>',
+            to: data.to,
+            subject: data.subject,
+            text: data.text,
+        };
+
+        return await transporter.sendMail(mailOptions).then(function () {
+            return { "msg": 'Mail enviado correctamente', "result": true }
+
+        }).catch(function (error) {
+            return { "msg": "ERROR: " + error.response, "result": false }
+        })
+
+    }
+
 }
 
-
-async function sendLicenciaNotification(data) {
-    const mailOptions = {
-        from: 'Licencias <licenciastestnode@gmail.com>',
-        // to: 'dariogaiero@gmail.com',
-        to: data.to,
-        // subject: 'Asunto del mail',
-        subject: data.subject,
-        // text: 'Prueba de envio de mail'
-        text: data.text,
-    };
-
-    return response = sendMail(mailOptions);
-}
-
-module.exports = {
-    sendLicenciaNotification
-}; 
+// export default Mailer

@@ -1,9 +1,9 @@
 // import mail from '../mailer/index';
-// import { sendLicenciaNotification } from './mailer/index';
+// import { mail } from '../mailer/index';
 
-const mail = require('../mailer/index');
+import mail, { sendMail } from '../mailer/index';
 
-async function testMail() {
+async function testMailOK() {
     // let result = false;
     // let msg,
 
@@ -14,9 +14,13 @@ async function testMail() {
             text: 'Probando texto del mail'
         }
 
-        var response = await mail.sendLicenciaNotification(dataMail)
+        new mail('gmail', 'licenciastestnode@gmail.com', 'licenciastest2020')
 
-        return response
+        sendMail(dataMail)
+
+        // var response = await mail.sendLicenciaNotification(dataMail)
+
+        // return response
 
     } catch (error) {
         throw error.message;
@@ -31,7 +35,7 @@ async function main() {
 
     try {
         var tests = [
-            testMail(),
+            testMailOK(),
         ];
 
         console.log('running tests...\n')
