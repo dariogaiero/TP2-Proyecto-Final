@@ -1,7 +1,9 @@
 // import mail from '../mailer/index';
 // import { mail } from '../mailer/index';
 
-import Mailer from '../mailer/index.js';
+// import Mailer from '../mailer/index.js';
+
+const Mailer = require('../mailer/index.js');
 
 async function testMailOK() {
     try {

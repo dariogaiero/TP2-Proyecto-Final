@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "envio-mail",
   "version": "1.0.0",
   "description": "Envio de mail node.js",
