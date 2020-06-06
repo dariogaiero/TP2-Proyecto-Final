@@ -1,4 +1,3 @@
-// const Mailer = require('../mailer/index.js');
 import Mailer from '../mailer/index.js';
 
 async function testMailOK() {
@@ -11,52 +10,57 @@ async function testMailOK() {
 
         const mail = new Mailer('gmail', 'licenciastestnode@gmail.com', 'licenciastest2020')
 
-        return response = mail.sendMail(dataMail)
+        var response = await mail.sendMail(dataMail)
+
+        return response
 
     } catch (error) {
         throw error.message;
     }
 }
 
-// async function testMailFAKE() {
+async function testMailFAKE() {
 
-//     try {
-//         var dataMail = {
-//             to: 'dariogaiero@gmail.com',
-//             subject: 'Prueba mail licencias - TP2',
-//             text: 'Probando texto del mail'
-//         }
+    try {
+        var dataMail = {
+            to: 'dariogaiero@gmail.com',
+            subject: 'Prueba mail licencias - TP2',
+            text: 'Probando texto del mail'
+        }
 
-//         const mail = new Mailer('gmail', 'licenciastestnodeFAKE@gmail.com', 'licenciastest2020')
+        const mail = new Mailer('gmail', 'licenciastestnodeFAKE@gmail.com', 'licenciastest2020')
 
-//         return response = mail.sendMail(dataMail)
+        var response = mail.sendMail(dataMail)
 
-//     } catch (error) {
-//         throw error.message;
-//     }
-// }
+        return response
+
+    } catch (error) {
+        throw error.message;
+    }
+}
 
 async function main() {
 
     let exitos = 0
     let finalizados = 0
     let errores = 0
+    let contador = 0
 
     try {
         var tests = [
-            testMailOK(),
-            // testMailFAKE(),
+            testMailOK,
+            testMailFAKE,
         ];
 
         console.log('running tests...\n')
 
         for (const test of tests) {
+            contador++
 
-            console.log('LLAMO AL TEST')
+            console.log(`${contador}- `)
+            console.log(test)
 
-            const response = await test
-
-            console.log('RESPNSE DEL TEST'+response)
+            const response = await test()
 
             if (response.result) {
                 exitos++
