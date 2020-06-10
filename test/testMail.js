@@ -1,5 +1,18 @@
 import Mailer from '../mailer/index.js';
 
+const credsOK = {
+    serv: 'gmail',
+    mail: 'licenciastestnode@gmail.conex',
+    pass: 'licenciastest2020'
+}
+
+const credsFake = {
+    serv: 'gmail',
+    mail: 'licenciastestnodeFAKE@gmail.com',
+    pass: 'licenciastest2020'
+}
+
+
 async function testMailOK() {
     try {
         var dataMail = {
@@ -8,7 +21,7 @@ async function testMailOK() {
             text: 'Probando texto del mail'
         }
 
-        const mail = new Mailer('gmail', 'licenciastestnode@gmail.com', 'licenciastest2020')
+        const mail = new Mailer(credsOK)
 
         var response = await mail.sendMail(dataMail)
 
@@ -28,7 +41,7 @@ async function testMailFAKE() {
             text: 'Probando texto del mail'
         }
 
-        const mail = new Mailer('gmail', 'licenciastestnodeFAKE@gmail.com', 'licenciastest2020')
+        const mail = new Mailer(credsFake)
 
         var response = mail.sendMail(dataMail)
 
