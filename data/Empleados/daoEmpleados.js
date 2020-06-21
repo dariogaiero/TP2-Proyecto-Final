@@ -10,8 +10,8 @@ class EstudiantesDao {
     //     throw new CustomError(500, 'falta implementar getByAge!')
     // }
 
-    async getByDni(dni) {
-        throw new CustomError(500, 'falta implementar getByDni!')
+    async getByDNI(dni) {
+        throw new CustomError(500, 'falta implementar getByDNI!')
     }
 
     async add(empleadoNuevo) {
@@ -19,15 +19,15 @@ class EstudiantesDao {
     }
 
     async deleteByDNI(dni) {
-        throw new CustomError(500, 'falta implementar deleteById!')
+        throw new CustomError(500, 'falta implementar deleteByDNI!')
     }
 
     async deleteAll() {
         throw new CustomError(500, 'falta implementar deleteAll!')
     }
 
-    async updateById(dni, nuevoEmpleado) {
-        throw new CustomError(500, 'falta implementar updateById!')
+    async updateByDNI(dni, nuevoEmpleado) {
+        throw new CustomError(500, 'falta implementar updateByDNI!')
     }
 }
 
