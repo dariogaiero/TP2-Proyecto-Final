@@ -59,7 +59,7 @@ class EmpleadosDaoRam extends EmpleadosDao {
                 // estuNuevo.id = this.proxId
                 this.empleados.push(empleadoNuevo)
                 // this.proxId++
-                return empleado
+                return empleadoNuevo
             } catch (error) {
                 throw new CustomError(500, 'error al crear un nuevo empleado', error)
             }
