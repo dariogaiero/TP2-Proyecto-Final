@@ -6,12 +6,12 @@ class EstudiantesDao {
         throw new CustomError(500, 'falta implementar getAll!')
     }
 
-    // async getByAge(edadMin, edadMax) {
-    //     throw new CustomError(500, 'falta implementar getByAge!')
-    // }
-
     async getByDNI(dni) {
         throw new CustomError(500, 'falta implementar getByDNI!')
+    }
+
+    async getMailByDNI(dni) {
+        throw new CustomError(500, 'falta implementar getMailByDNI!')
     }
 
     async add(empleadoNuevo) {

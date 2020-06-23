@@ -40,7 +40,20 @@ class CrearLicencia {
         this.licencias.add(nuevaLicencia)
     }
 
-    _programarTarea(data) {
+    _programarMail(dni, tipoLicencia, fechaDesde) {
+        
+        const data = {
+            to: null,
+            subject: null,
+            text: null
+        }
+
+        const empleado = await this.Empleados.getByDNI(dni)
+        
+        data.to = empleado.dni
+        data.subject = 'Recordatorio de ' +tipoLicencia
+        data.text = 'Recuerde en que en dos dias comienza la licencia ' +tipoLicencia
+
         // Programo mail para dos dias antes de la fechaDesde de la licencia
         this.mailer.sendMail(data);
     }
@@ -49,7 +62,7 @@ class CrearLicencia {
 
         this.validarDatos(nuevaLicencia)
         this.confirmarLicencia(nuevaLicencia)
-        this.programarAviso(nuevaLicencia)
+        this.programarMail(nuevaLicencia.dni, nuevaLicencia.tipoLicencia, nuevaLicencia.fechaDesde)
 
     }
 }
