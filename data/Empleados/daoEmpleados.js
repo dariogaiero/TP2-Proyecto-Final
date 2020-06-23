@@ -31,4 +31,4 @@ class EstudiantesDao {
     }
 }
 
-export default EstudiantesDao
+export default EmpleadosDao
