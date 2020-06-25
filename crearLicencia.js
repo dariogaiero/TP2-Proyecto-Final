@@ -60,9 +60,9 @@ class CrearLicencia {
 
     ejecutar(nuevaLicencia) {
 
-        this.validarDatos(nuevaLicencia)
-        this.confirmarLicencia(nuevaLicencia)
-        this.programarMail(nuevaLicencia.dni, nuevaLicencia.tipoLicencia, nuevaLicencia.fechaDesde)
+        this._validarDatos(nuevaLicencia)
+        this._confirmarLicencia(nuevaLicencia)
+        this._programarMail(nuevaLicencia.dni, nuevaLicencia.tipoLicencia, nuevaLicencia.fechaDesde)
 
     }
 }

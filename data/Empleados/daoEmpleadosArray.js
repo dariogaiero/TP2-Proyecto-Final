@@ -17,24 +17,6 @@ class EmpleadosDaoRam extends EmpleadosDao {
         }
     }
 
-    // async getByAge(edadMin, edadMax) {
-    //     try {
-    //         return EstudiantesDaoRam.filterByRange(this.estudiantes, 'edad', edadMin, edadMax)
-    //     } catch (err) {
-    //         throw new CustomError(500, 'error al obtener los estudiantes por edad', err)
-    //     }
-    // }
-
-    // static filterByRange(elems, campo, minVal, maxVal) {
-    //     const result = []
-    //     for (const elem of elems) {
-    //         if (elem[campo] >= minVal && elem[campo] <= maxVal) {
-    //             result.push(elem)
-    //         }
-    //     }
-    //     return result
-    // }
-
     async getByDni(dni) {
         let buscado
         try {

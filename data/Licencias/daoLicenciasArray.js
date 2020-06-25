@@ -7,6 +7,12 @@ class LicenciasDaoRam extends LicenciasDao {
         super()
         this.licencias = []
         this.proxId = 0
+        this.tipoLicencias = [
+            {ID: 1, name: 'Vacaciones'},
+            {ID: 2, name: 'Enfermedad'},
+            {ID: 3, name: 'Dia paternidad'},
+            {ID: 4, name: 'Dia de estudio'},
+        ]
     }
 
     async getAll() {
