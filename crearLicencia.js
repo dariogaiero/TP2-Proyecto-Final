@@ -17,10 +17,8 @@ class CrearLicencia {
         let encontroEmpleado = false
         let encontroTipoLicencia = false
 
-        // Valido que el DNI del empleado se encuentre en la base de empleados.
         encontroEmpleado = await this.Empleados.getByDNI(data.dni)
 
-        // valido que el tipo de licencia sea correcta
         encontroTipoLicencia = await this.tipoLicencias.getByID(data.tipoLicencias)
 
         // Valido que las fechas sean fechas validas y que no se superpongan con otro licencia ya cargada
@@ -36,12 +34,11 @@ class CrearLicencia {
 
         // Como genero un ID dinamico????
 
-        // impacto datos de licencia en base de datos.
         this.licencias.add(nuevaLicencia)
     }
 
     _programarMail(dni, tipoLicencia, fechaDesde) {
-        
+
         const data = {
             to: null,
             subject: null,
@@ -49,10 +46,10 @@ class CrearLicencia {
         }
 
         const empleado = await this.Empleados.getByDNI(dni)
-        
+
         data.to = empleado.dni
-        data.subject = 'Recordatorio de ' +tipoLicencia
-        data.text = 'Recuerde en que en dos dias comienza la licencia ' +tipoLicencia
+        data.subject = 'Recordatorio de ' + tipoLicencia
+        data.text = 'Recuerde en que en dos dias comienza la licencia ' + tipoLicencia
 
         // Programo mail para dos dias antes de la fechaDesde de la licencia
         this.mailer.sendMail(data);
