@@ -1,4 +1,4 @@
-import CustomError from '../errores/CustomError.js.js.js.js'
+import CustomError from '../errores/CustomError.js.js.js.js.js'
 
 class LicenciasDao {
 
