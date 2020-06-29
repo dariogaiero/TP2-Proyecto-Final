@@ -3,9 +3,9 @@
   "name": "envio-mail",
   "version": "1.0.0",
   "description": "Envio de mail node.js",
-  "main": "test/testMail.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "node test/testMail.js"
+    "start": "PORT=8080 node src/main.js"
   },
   "author": "Dario Gaiero",
   "license": "ISC",

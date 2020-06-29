@@ -2,7 +2,7 @@ import Licencia from '../models/licencia.js'
 import LicenciasDAOFactory from '../data/daoFactory.js'
 import CustomError from '../errores/CustomError.js'
 
-class LicenciaApi {
+class LicenciasApi {
 
     constructor() {
         this.licenciasDAO = LicenciasDAOFactory.getDao()
@@ -58,4 +58,4 @@ class LicenciaApi {
     }
 }
 
-export default LicenciaApi
+export default LicenciasApi

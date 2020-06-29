@@ -8,7 +8,7 @@ class App {
         const app = express()
         app.use(express.json())
         app.set('json spaces', 4)
-        app.use('/api/estudiantes', getCrearLicenciasRouter())
+        app.use('/api/licencias', getCrearLicenciasRouter())
         this.app = app
     }
 
