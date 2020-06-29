@@ -10,6 +10,7 @@
   "author": "Dario Gaiero",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "babel": "^6.23.0",
     "body-parser": "^1.19.0",
     "eslint": "^7.1.0",
