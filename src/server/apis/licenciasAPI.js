@@ -36,7 +36,7 @@ class LicenciasApi {
         await this.licenciasDAO.deleteAll()
     }
 
-    async reemplazar(id, licenciasParaReemplazar) {
+    async reemplazar(id, licenciaParaReemplazar) {
         licenciaApi.asegurarlicenciaValida(licenciaParaReemplazar)
         LicenciaApi.asegurarQueCoincidenLosIds(licenciaParaReemplazar.id, id)
         const licenciaReemplazado = await this.licenciasDAO.updateById(id, licenciaParaReemplazar)
