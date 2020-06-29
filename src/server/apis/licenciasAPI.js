@@ -1,5 +1,5 @@
 import Licencia from '../models/licencia.js'
-import LicenciasDAOFactory from '../data/daoFactory.js'
+import LicenciasDAOFactory from '../data/Licecncias/daoLicenciasFactory.js'
 import CustomError from '../errores/CustomError.js'
 
 class LicenciasApi {
@@ -9,7 +9,7 @@ class LicenciasApi {
     }
 
     async agregar(licenciaParaAgregar) {
-        LicenciaApi.aseguraLicenciaValida(licenciaaraAgregar)
+        LicenciaApi.aseguraLicenciaValida(licenciaParaAgregar)
         const licenciaAgregada = await this.licenciaDAO.add(licenciaParaAgregar)
         return licenciaAgregada
     }
