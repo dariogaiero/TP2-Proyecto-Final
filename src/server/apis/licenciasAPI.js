@@ -11,6 +11,8 @@ class LicenciasApi {
     async agregar(licenciaParaAgregar) {
         LicenciaApi.aseguraLicenciaValida(licenciaParaAgregar)
         const licenciaAgregada = await this.licenciaDAO.add(licenciaParaAgregar)
+
+
         return licenciaAgregada
     }
 
@@ -41,12 +43,6 @@ class LicenciasApi {
         LicenciaApi.asegurarQueCoincidenLosIds(licenciaParaReemplazar.id, id)
         const licenciaReemplazado = await this.licenciasDAO.updateById(id, licenciaParaReemplazar)
         return licenciaReemplazado
-    }
-
-    static asegurarQueCoincidenLosIds(id1, id2) {
-        if (id1 != id2) {
-            throw new CustomError(400, 'no coinciden los ids enviados', { id1, id2 })
-        }
     }
 
     static asegurarlicenciaValida(licencia) {

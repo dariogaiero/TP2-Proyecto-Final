@@ -6,7 +6,7 @@ class EmpleadosDaoRam extends EmpleadosDao {
     constructor() {
         super()
         this.empleados = []
-        // this.proxId = 0
+        this.proxId = 0
     }
 
     async getAll() {
